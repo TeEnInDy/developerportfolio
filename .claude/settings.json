@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./.claude/skills/impeccable/scripts/impeccable.cmd context *)",
+      "Bash(./.claude/skills/impeccable/scripts/impeccable context *)",
+      "Bash(rm -rf src/src src/.figma src/index.html src/package.json src/pnpm-lock.yaml src/tsconfig.json src/vite.config.ts src/.gitattributes src/.gitignore src/.mise.toml src/AGENTS.md src/CLAUDE.md)",
+      "Bash(rmdir \"app\")",
+      "Bash(npx next *)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/about)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/works)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/contact)",
+      "Bash(cat /tmp/next-dev.log 2>/dev/null; echo ---; ps aux | grep -i next | grep -v grep)",
+      "Read(//tmp/**)",
+      "Bash(curl -sS http://localhost:3000/)",
+      "Bash(curl -sSI http://localhost:3000/)",
+      "Bash(curl -sS -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3010/)",
+      "Bash(curl -sS -o /dev/null -w \"/about -> %{http_code}\\\\n\" http://localhost:3010/about)",
+      "Bash(curl -sS -o /dev/null -w \"/works -> %{http_code}\\\\n\" http://localhost:3010/works)",
+      "Bash(curl -sS -o /dev/null -w \"/contact -> %{http_code}\\\\n\" http://localhost:3010/contact)",
+      "Bash(curl -sS http://localhost:3010/)"
+    ]
+  }
+}

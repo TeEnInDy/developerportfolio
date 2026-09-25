@@ -5,6 +5,13 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Tag } from "@/components/ui/Tag";
 import type { Project } from "@/data/projects";
 
+const SPAN_CLASSES: Record<number, string> = {
+  4: "col-span-1 sm:col-span-2 md:col-span-4",
+  6: "col-span-1 sm:col-span-2 md:col-span-6",
+  8: "col-span-1 sm:col-span-2 md:col-span-8",
+  12: "col-span-1 sm:col-span-2 md:col-span-12",
+};
+
 export function ProjectCard({
   project,
   span,
@@ -15,78 +22,86 @@ export function ProjectCard({
   rowSpan?: number;
 }) {
   const [hovered, setHovered] = useState(false);
+  const large = span >= 8;
+  const colClass = SPAN_CLASSES[span] ?? SPAN_CLASSES[6];
+  const rowClass = rowSpan > 1 ? "md:row-span-2" : "";
 
   return (
-    <div style={{ gridColumn: `span ${span}`, gridRow: rowSpan > 1 ? `span ${rowSpan}` : undefined, position: "relative" }}>
+    <div className={`${colClass} ${rowClass} relative`}>
       <GlassCard
+        className="flex h-full flex-col p-6 sm:p-8"
         style={{
-          height: "100%",
-          padding: "32px",
           overflow: "hidden",
           position: "relative",
           transition: "border-color 0.3s, transform 0.3s",
           borderColor: hovered ? `${project.accent}40` : "rgba(255,255,255,0.10)",
           transform: hovered ? "translateY(-2px)" : "none",
-          cursor: "pointer",
-          display: "flex",
-          flexDirection: "column",
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         <div
-          style={{
-            width: "100%",
-            height: span >= 8 ? "340px" : "180px",
-            borderRadius: "16px",
-            overflow: "hidden",
-            marginBottom: "24px",
-            background: "#111",
-            flexShrink: 0,
-          }}
+          className={`mb-6 w-full shrink-0 overflow-hidden rounded-2xl bg-[#111] ${
+            large ? "aspect-16/10 md:aspect-video" : "aspect-4/3"
+          }`}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={project.image}
             alt={project.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease", transform: hovered ? "scale(1.03)" : "scale(1)" }}
+            className="h-full w-full object-cover transition-transform duration-500"
+            style={{ transform: hovered ? "scale(1.03)" : "scale(1)" }}
           />
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            {project.tags.slice(0, span >= 8 ? 4 : 2).map((tag) => (
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex flex-wrap gap-2">
+            {project.tags.slice(0, large ? 4 : 3).map((tag) => (
               <Tag key={tag} label={tag} color={project.accent} />
             ))}
           </div>
-          <span className="font-display" style={{ fontSize: "12px", color: "#555", fontWeight: 500 }}>{project.year}</span>
+          <span className="font-display text-xs font-medium" style={{ color: "#555" }}>
+            {project.year}
+          </span>
         </div>
 
         <h3
-          className="font-display"
-          style={{ fontSize: span >= 8 ? "28px" : "18px", lineHeight: span >= 8 ? "34px" : "24px", fontWeight: 700, color: "#F5F5F5", marginBottom: "12px", letterSpacing: "-0.02em" }}
+          className={`font-display mb-3 font-bold ${large ? "text-2xl sm:text-3xl" : "text-lg"}`}
+          style={{ color: "#F5F5F5", letterSpacing: "-0.02em" }}
         >
           {project.title}
         </h3>
 
-        <p className="font-body" style={{ fontSize: "16px", lineHeight: "24px", color: "#A3A3A3", flex: 1 }}>
+        <p className="font-body flex-1 text-base leading-6" style={{ color: "#A3A3A3" }}>
           {project.description}
         </p>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "24px", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-          <span className="font-display" style={{ fontSize: "12px", color: "#555", fontWeight: 500, letterSpacing: "0.04em", textTransform: "uppercase" }}>{project.role}</span>
+        <div
+          className="mt-6 flex items-center justify-between pt-6"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+        >
+          <span
+            className="font-display text-xs font-medium uppercase tracking-wide"
+            style={{ color: "#555" }}
+          >
+            {project.role}
+          </span>
           <a
             href={project.link}
-            className="font-display"
-            style={{ fontSize: "13px", fontWeight: 600, color: project.accent, textDecoration: "none", display: "flex", alignItems: "center", gap: "4px" }}
+            target={project.link.startsWith("http") ? "_blank" : undefined}
+            rel={project.link.startsWith("http") ? "noreferrer" : undefined}
+            className="font-display flex items-center gap-1 text-sm font-semibold"
+            style={{ color: project.accent, textDecoration: "none" }}
           >
-            View project <span>→</span>
+            View project <span aria-hidden="true">→</span>
           </a>
         </div>
 
         {hovered && (
           <div
             aria-hidden="true"
-            style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: `linear-gradient(90deg, transparent, ${project.accent}80, transparent)` }}
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${project.accent}80, transparent)` }}
           />
         )}
       </GlassCard>

@@ -3,9 +3,9 @@ import { projects } from "@/data/projects";
 
 export function WorksGrid() {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "24px" }}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6">
       {projects.map((project) => (
-        <ProjectCard key={project.slug} project={project} span={6} />
+        <ProjectCard key={project.slug} project={project} span={4} />
       ))}
     </div>
   );

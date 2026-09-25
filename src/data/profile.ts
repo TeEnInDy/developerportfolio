@@ -5,6 +5,7 @@ export const profile = {
   age: 21,
   role: "Software Engineering Student",
   location: "Bangsaen, Chonburi, Thailand",
+  photo: "/images/Profile.jpg",
   availability: "Open to internship / co-op opportunities",
   tagline: "Building software, one problem at a time.",
   summary:

@@ -90,9 +90,6 @@ export function CVSection() {
                 <p className="text-lg font-medium" style={{ color: "#C9BEFF" }}>
                   {profile.role} · {profile.age} ปี · {profile.location}
                 </p>
-                <p className="max-w-[560px] text-base leading-7" style={{ color: "var(--muted)" }}>
-                  {profile.summary}
-                </p>
 
                 <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-[15px]" style={{ color: "var(--muted)" }}>
                   <a href={`mailto:${profile.email}`} style={{ color: "var(--accent)" }}>{profile.email}</a>

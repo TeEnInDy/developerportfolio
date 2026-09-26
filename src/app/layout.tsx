@@ -23,7 +23,7 @@ const plexThai = IBM_Plex_Sans_Thai({
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
-  description: profile.summary,
+  description: `Portfolio of ${profile.name}, ${profile.role} based in ${profile.location}.`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

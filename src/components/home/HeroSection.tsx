@@ -72,7 +72,7 @@ export function HeroSection() {
             className="font-body"
             style={{ fontSize: "16px", lineHeight: "24px", color: "#A3A3A3", maxWidth: "520px", margin: "0 auto 48px" }}
           >
-            {profile.summary}
+            {profile.role} · {profile.location}
           </p>
           </Reveal>
 

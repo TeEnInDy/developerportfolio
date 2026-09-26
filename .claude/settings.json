@@ -18,7 +18,14 @@
       "Bash(curl -sS -o /dev/null -w \"/about -> %{http_code}\\\\n\" http://localhost:3010/about)",
       "Bash(curl -sS -o /dev/null -w \"/works -> %{http_code}\\\\n\" http://localhost:3010/works)",
       "Bash(curl -sS -o /dev/null -w \"/contact -> %{http_code}\\\\n\" http://localhost:3010/contact)",
-      "Bash(curl -sS http://localhost:3010/)"
+      "Bash(curl -sS http://localhost:3010/)",
+      "Bash(sort -t: -k3 -u)",
+      "Bash(git mv *)",
+      "Bash(sed -i '' 's#import styles from \"./about.module.css\";#import styles from \"./effects.module.css\";#' src/components/ui/Reveal.tsx)",
+      "Bash(xargs sed -i '' 's#from \"./Reveal\"#from \"@/components/ui/Reveal\"#')",
+      "Bash(curl -s -o /dev/null http://localhost:3000/about)",
+      "Bash(curl -s -o /dev/null http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/works)"
     ]
   }
 }

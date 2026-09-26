@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Tag } from "@/components/ui/Tag";
+import { Reveal } from "@/components/ui/Reveal";
 import type { Project } from "@/data/projects";
 
 const SPAN_CLASSES: Record<number, string> = {
@@ -16,10 +17,12 @@ export function ProjectCard({
   project,
   span,
   rowSpan = 1,
+  delay = 0,
 }: {
   project: Project;
   span: number;
   rowSpan?: number;
+  delay?: number;
 }) {
   const [hovered, setHovered] = useState(false);
   const large = span >= 8;
@@ -27,7 +30,7 @@ export function ProjectCard({
   const rowClass = rowSpan > 1 ? "md:row-span-2" : "";
 
   return (
-    <div className={`${colClass} ${rowClass} relative`}>
+    <Reveal className={`${colClass} ${rowClass} relative`} delay={delay}>
       <GlassCard
         className="flex h-full flex-col p-6 sm:p-8"
         style={{
@@ -81,7 +84,7 @@ export function ProjectCard({
           style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
         >
           <span
-            className="font-display text-xs font-medium uppercase tracking-wide"
+            className="font-display text-xs font-medium"
             style={{ color: "#555" }}
           >
             {project.role}
@@ -93,7 +96,7 @@ export function ProjectCard({
             className="font-display flex items-center gap-1 text-sm font-semibold"
             style={{ color: project.accent, textDecoration: "none" }}
           >
-            View project <span aria-hidden="true">→</span>
+            ดูโปรเจกต์ <span aria-hidden="true">→</span>
           </a>
         </div>
 
@@ -105,6 +108,6 @@ export function ProjectCard({
           />
         )}
       </GlassCard>
-    </div>
+    </Reveal>
   );
 }

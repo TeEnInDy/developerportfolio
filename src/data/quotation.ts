@@ -7,9 +7,9 @@ export type Phase = { title: string; duration: string; detail: string };
 export type Deliverable = { title: string; note: string };
 
 export const quotation = {
-  documentNo: "QT-2026-001",
+  documentNo: "",
   issuedAt: "25 กันยายน 2026",
-  validUntil: "25 ตุลาคม 2026",
+  validUntil: "",
   validDays: 30,
   currency: "บาท",
 
@@ -76,9 +76,9 @@ export const quotation = {
   outOfScope: ["Front-end Development", "Back-end Development", "User Testing"],
 
   pricing: [
-    { title: "UX Flow", description: "Requirement, User Flow, Information Architecture", price: 20000 },
-    { title: "UI Design", description: "ออกแบบหน้าจอ Mobile/Web, Component Library, Responsive", price: 45000 },
-    { title: "Design System", description: "Color, Typography, Grid, Spacing, Components", price: 20000 },
+    { title: "UX Flow", description: "Requirement, User Flow, Information Architecture", price: 0},
+    { title: "UI Design", description: "ออกแบบหน้าจอ Mobile/Web, Component Library, Responsive", price: 0},
+    { title: "Design System", description: "Color, Typography, Grid, Spacing, Components", price: 0},
   ] satisfies PriceItem[],
 
   payments: [

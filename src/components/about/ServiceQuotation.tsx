@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { profile } from "@/data/profile";
+import { LineLink } from "@/components/ui/LineLink";
 import { quotation, quotationTotal } from "@/data/quotation";
-import { Reveal } from "./Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import styles from "./about.module.css";
 
 const fmt = (n: number) => Math.round(n).toLocaleString("en-US");
@@ -209,7 +210,7 @@ export function ServiceQuotation() {
                   </div>
                   <div className="min-w-0">
                     <div className="truncate font-semibold">{profile.name}</div>
-                    <div className="text-[13px]" style={{ color: "var(--accent)" }}>UX/UI Designer · Freelance</div>
+                    <div className="text-[13px]" style={{ color: "var(--accent)" }}>Full-stack Freelance</div>
                   </div>
                 </div>
               </div>
@@ -649,7 +650,7 @@ export function ServiceQuotation() {
               <div className="flex flex-wrap gap-x-5 gap-y-1 text-[15px]" style={{ color: "var(--muted)" }}>
                 <span>โทร {profile.phone}</span>
                 <a href={`mailto:${profile.email}`} style={{ color: "var(--accent)" }}>{profile.email}</a>
-                <span>LINE {profile.line}</span>
+                <LineLink style={{ color: "var(--accent)" }} />
               </div>
             </div>
             <Link

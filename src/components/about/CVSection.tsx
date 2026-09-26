@@ -1,11 +1,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { profile } from "@/data/profile";
+import { LineLink } from "@/components/ui/LineLink";
 import { education } from "@/data/education";
 import { experience } from "@/data/experience";
 import { skills } from "@/data/skills";
 import { Tag } from "@/components/ui/Tag";
-import { Reveal } from "./Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import styles from "./about.module.css";
 
 function SectionTitle({ th, en }: { th: string; en: string }) {
@@ -96,7 +97,7 @@ export function CVSection() {
                 <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-[15px]" style={{ color: "var(--muted)" }}>
                   <a href={`mailto:${profile.email}`} style={{ color: "var(--accent)" }}>{profile.email}</a>
                   <span>โทร {profile.phone}</span>
-                  <span>LINE {profile.line}</span>
+                  <LineLink style={{ color: "var(--accent)" }} />
                   <a href={profile.github} target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>GitHub ↗</a>
                   <a href={profile.linkedin} target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>LinkedIn ↗</a>
                 </div>
@@ -143,15 +144,7 @@ export function CVSection() {
                 {profile.languages.map((lang) => (
                   <div key={lang.label} className="flex items-center gap-3">
                     <span className="w-20 shrink-0 text-sm font-semibold" style={{ color: "var(--muted)" }}>{lang.label}</span>
-                    <div className="flex flex-1 gap-1.5">
-                      {Array.from({ length: lang.max }).map((_, i) => (
-                        <span
-                          key={i}
-                          className="h-2 flex-1 rounded-full"
-                          style={{ background: i < lang.level ? "var(--accent)" : "rgba(255,255,255,0.08)" }}
-                        />
-                      ))}
-                    </div>
+                    <span className="text-sm" style={{ color: "var(--text)" }}>{lang.proficiency}</span>
                   </div>
                 ))}
               </div>

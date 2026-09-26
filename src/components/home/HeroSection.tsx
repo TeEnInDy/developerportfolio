@@ -1,26 +1,38 @@
 import { GlassCard } from "@/components/ui/GlassCard";
+import { Reveal } from "@/components/ui/Reveal";
 import { profile } from "@/data/profile";
+import fx from "@/components/ui/effects.module.css";
 
 export function HeroSection() {
   return (
-    <section style={{ paddingTop: "160px", paddingBottom: "128px" }}>
+    <section style={{ paddingTop: "160px", paddingBottom: "128px", overflowX: "clip" }}>
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 72px", position: "relative" }}>
         <div
           aria-hidden="true"
+          className={fx.orb}
           style={{
-            position: "absolute",
             top: "-80px",
-            left: "50%",
-            transform: "translateX(-50%)",
+            left: "calc(50% - 300px)",
             width: "600px",
             height: "600px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%)",
-            pointerEvents: "none",
+            background: "radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className={fx.orb}
+          style={{
+            top: "120px",
+            left: "8%",
+            width: "320px",
+            height: "320px",
+            background: "radial-gradient(circle, rgba(244,114,182,0.08) 0%, transparent 70%)",
+            animationDelay: "-6s",
           }}
         />
 
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center", position: "relative" }}>
+          <Reveal>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
             <div
               style={{
@@ -33,13 +45,15 @@ export function HeroSection() {
                 border: "1px solid rgba(167,139,250,0.25)",
               }}
             >
-              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#34D399", boxShadow: "0 0 8px #34D399" }} />
+              <div className={fx.pulse} style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#34D399" }} />
               <span className="font-display" style={{ fontSize: "13px", color: "#A78BFA", fontWeight: 500, letterSpacing: "0.05em" }}>
                 {profile.availability}
               </span>
             </div>
           </div>
+          </Reveal>
 
+          <Reveal delay={120}>
           <h1
             className="font-display"
             style={{
@@ -60,12 +74,16 @@ export function HeroSection() {
           >
             {profile.summary}
           </p>
+          </Reveal>
 
+          <Reveal delay={240}>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="/works"
-              className="font-display"
+              className={`font-display ${fx.lift}`}
               style={{
+                position: "relative",
+                overflow: "hidden",
                 padding: "14px 32px",
                 borderRadius: "12px",
                 background: "#A78BFA",
@@ -76,11 +94,12 @@ export function HeroSection() {
                 letterSpacing: "-0.01em",
               }}
             >
+              <span aria-hidden="true" className={fx.shine} />
               View my work
             </a>
             <a
               href="/contact"
-              className="font-display"
+              className={`font-display ${fx.lift}`}
               style={{
                 padding: "14px 32px",
                 borderRadius: "12px",
@@ -96,10 +115,12 @@ export function HeroSection() {
               Get in touch
             </a>
           </div>
+          </Reveal>
 
           <div
             aria-hidden="true"
-            style={{ position: "absolute", right: "-120px", top: "60px", width: "220px", animation: "float 6s ease-in-out infinite" }}
+            className={fx.float}
+            style={{ position: "absolute", right: "-120px", top: "60px", width: "220px" }}
           >
             <GlassCard style={{ padding: "20px" }}>
               <div>
@@ -110,13 +131,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-      `}</style>
     </section>
   );
 }

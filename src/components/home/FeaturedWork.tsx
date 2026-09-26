@@ -1,4 +1,5 @@
 import { ProjectCard } from "@/components/works/ProjectCard";
+import { Reveal } from "@/components/ui/Reveal";
 import { projects } from "@/data/projects";
 
 export function FeaturedWork() {
@@ -8,7 +9,7 @@ export function FeaturedWork() {
   return (
     <section id="work" style={{ paddingBottom: "128px" }}>
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 72px" }}>
-        <div style={{ marginBottom: "64px" }}>
+        <Reveal style={{ marginBottom: "64px" }}>
           <h2
             className="font-display"
             style={{ fontSize: "48px", lineHeight: "56px", fontWeight: 800, color: "#F5F5F5", letterSpacing: "-0.03em", marginBottom: "16px" }}
@@ -16,14 +17,14 @@ export function FeaturedWork() {
             Selected work
           </h2>
           <p className="font-body" style={{ fontSize: "16px", lineHeight: "24px", color: "#A3A3A3", maxWidth: "480px" }}>
-            A few projects worth a closer look.
+            โปรเจกต์เด่นที่สะท้อนทักษะและวิธีการทำงานของผม
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6">
           <ProjectCard project={featured} span={8} rowSpan={2} />
-          {rest.map((project) => (
-            <ProjectCard key={project.slug} project={project} span={4} />
+          {rest.map((project, i) => (
+            <ProjectCard key={project.slug} project={project} span={4} delay={(i + 1) * 120} />
           ))}
         </div>
 

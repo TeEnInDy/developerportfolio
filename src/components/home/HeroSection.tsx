@@ -5,8 +5,8 @@ import fx from "@/components/ui/effects.module.css";
 
 export function HeroSection() {
   return (
-    <section style={{ paddingTop: "160px", paddingBottom: "128px", overflowX: "clip" }}>
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 72px", position: "relative" }}>
+    <section style={{ paddingTop: "clamp(120px, 20vw, 160px)", paddingBottom: "clamp(80px, 12vw, 128px)", overflowX: "clip" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 72px)", position: "relative" }}>
         <div
           aria-hidden="true"
           className={fx.orb}
@@ -57,8 +57,8 @@ export function HeroSection() {
           <h1
             className="font-display"
             style={{
-              fontSize: "72px",
-              lineHeight: "80px",
+              fontSize: "clamp(40px, 8vw, 72px)",
+              lineHeight: 1.1,
               fontWeight: 900,
               letterSpacing: "-0.04em",
               marginBottom: "24px",
@@ -119,7 +119,7 @@ export function HeroSection() {
 
           <div
             aria-hidden="true"
-            className={fx.float}
+            className={`${fx.float} hidden xl:block`}
             style={{ position: "absolute", right: "-120px", top: "60px", width: "220px" }}
           >
             <GlassCard style={{ padding: "20px" }}>

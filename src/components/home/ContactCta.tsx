@@ -6,10 +6,10 @@ import { profile } from "@/data/profile";
 
 export function ContactCta() {
   return (
-    <section id="contact" style={{ paddingBottom: "128px" }}>
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 72px" }}>
+    <section id="contact" style={{ paddingBottom: "clamp(80px, 12vw, 128px)" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 72px)" }}>
         <Reveal>
-        <GlassCard style={{ padding: "80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <GlassCard style={{ padding: "clamp(48px, 8vw, 80px) clamp(20px, 6vw, 80px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div
             aria-hidden="true"
             className={fx.orb}
@@ -37,9 +37,10 @@ export function ContactCta() {
           <div style={{ position: "relative" }}>
             <h2
               className="font-display"
-              style={{ fontSize: "48px", lineHeight: "56px", fontWeight: 800, color: "#F5F5F5", letterSpacing: "-0.03em", marginBottom: "16px" }}
+              style={{ fontSize: "clamp(32px, 6vw, 48px)", lineHeight: 1.15, fontWeight: 800, color: "#F5F5F5", letterSpacing: "-0.03em", marginBottom: "16px" }}
             >
-              Let&apos;s build something<br />
+              Let&apos;s build something{" "}
+              <br className="hidden sm:inline" />
               <span style={{ color: "#A78BFA" }}>worth remembering.</span>{" "}
               <span aria-hidden="true" className={fx.blink} style={{ color: "#C9BEFF" }}>✦</span>
             </h2>
@@ -54,7 +55,8 @@ export function ContactCta() {
                   position: "relative",
                   overflow: "hidden",
                   display: "inline-block",
-                  padding: "16px 40px",
+                  maxWidth: "100%",
+                  padding: "16px clamp(24px, 5vw, 40px)",
                   borderRadius: "12px",
                   background: "#A78BFA",
                   color: "#0A0A0A",

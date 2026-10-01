@@ -4,17 +4,17 @@ import fx from "@/components/ui/effects.module.css";
 
 export default function WorksPage() {
   return (
-    <section style={{ paddingTop: "160px", paddingBottom: "128px", background: "#0A0A0A", minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+    <section style={{ paddingTop: "clamp(120px, 20vw, 160px)", paddingBottom: "clamp(80px, 12vw, 128px)", background: "#0A0A0A", minHeight: "100vh", position: "relative", overflow: "hidden" }}>
       <div
         aria-hidden="true"
         className={fx.orb}
         style={{ top: "40px", left: "-120px", width: "520px", height: "520px", background: "radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%)" }}
       />
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 72px", position: "relative" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 72px)", position: "relative" }}>
         <Reveal>
         <h1
           className="font-display"
-          style={{ fontSize: "56px", lineHeight: "64px", fontWeight: 800, color: "#F5F5F5", letterSpacing: "-0.03em", marginBottom: "64px" }}
+          style={{ fontSize: "clamp(40px, 7vw, 56px)", lineHeight: 1.15, fontWeight: 800, color: "#F5F5F5", letterSpacing: "-0.03em", marginBottom: "clamp(40px, 6vw, 64px)" }}
         >
           Work
         </h1>

@@ -4,7 +4,7 @@ import { ServiceQuotation } from "@/components/about/ServiceQuotation";
 export default function AboutPage() {
   return (
     <div style={{ background: "#0A0A0A", minHeight: "100vh" }}>
-      <div style={{ paddingTop: "160px" }} />
+      <div style={{ paddingTop: "clamp(112px, 18vw, 160px)" }} />
       <CVSection />
       <ServiceQuotation />
     </div>

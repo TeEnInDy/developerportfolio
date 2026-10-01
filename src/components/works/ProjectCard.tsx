@@ -7,10 +7,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import type { Project } from "@/data/projects";
 
 const SPAN_CLASSES: Record<number, string> = {
-  4: "col-span-1 sm:col-span-2 md:col-span-4",
-  6: "col-span-1 sm:col-span-2 md:col-span-6",
-  8: "col-span-1 sm:col-span-2 md:col-span-8",
-  12: "col-span-1 sm:col-span-2 md:col-span-12",
+  4: "col-span-1 lg:col-span-4",
+  6: "col-span-1 lg:col-span-6",
+  8: "col-span-1 sm:col-span-2 lg:col-span-8",
+  12: "col-span-1 sm:col-span-2 lg:col-span-12",
 };
 
 export function ProjectCard({
@@ -27,7 +27,7 @@ export function ProjectCard({
   const [hovered, setHovered] = useState(false);
   const large = span >= 8;
   const colClass = SPAN_CLASSES[span] ?? SPAN_CLASSES[6];
-  const rowClass = rowSpan > 1 ? "md:row-span-2" : "";
+  const rowClass = rowSpan > 1 ? "lg:row-span-2" : "";
 
   return (
     <Reveal className={`${colClass} ${rowClass} relative`} delay={delay}>
@@ -45,7 +45,7 @@ export function ProjectCard({
       >
         <div
           className={`mb-6 w-full shrink-0 overflow-hidden rounded-2xl bg-[#111] ${
-            large ? "aspect-16/10 md:aspect-video" : "aspect-4/3"
+            large ? "aspect-16/10 lg:aspect-video" : "aspect-4/3"
           }`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

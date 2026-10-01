@@ -97,17 +97,15 @@
 /* ---------- things that animate when revealed ---------- */
 .bar {
   transform-origin: left;
-  transform: scaleX(0);
   transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
 }
-[data-visible="true"] .bar { transform: scaleX(1); }
+[data-visible="false"] .bar { transform: scaleX(0); }
 
 .ringArc {
   stroke-dasharray: 302;
-  stroke-dashoffset: 302;
   transition: stroke-dashoffset 2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s;
 }
-[data-visible="true"] .ringArc { stroke-dashoffset: 0; }
+[data-visible="false"] .ringArc { stroke-dashoffset: 302; }
 
 .progress { transition: width 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
 
@@ -134,6 +132,6 @@
     animation: none !important;
     transition: none !important;
   }
-  .bar { transform: none; }
-  .ringArc { stroke-dashoffset: 0; }
+  [data-visible="false"] .bar { transform: none; }
+  [data-visible="false"] .ringArc { stroke-dashoffset: 0; }
 }

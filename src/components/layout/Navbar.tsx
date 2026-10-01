@@ -16,15 +16,16 @@ export function Navbar() {
         left: "50%",
         transform: "translateX(-50%)",
         zIndex: 100,
-        width: "auto",
+        width: "max-content",
+        maxWidth: "calc(100vw - 24px)",
       }}
     >
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "32px",
-          padding: "12px 24px",
+          gap: "clamp(14px, 4vw, 32px)",
+          padding: "12px clamp(16px, 4vw, 24px)",
           borderRadius: "999px",
           background: "rgba(10,10,10,0.85)",
           border: "1px solid rgba(255,255,255,0.10)",

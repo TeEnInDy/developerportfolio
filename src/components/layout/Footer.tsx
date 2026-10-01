@@ -5,10 +5,12 @@ export function Footer() {
     <footer
       style={{
         borderTop: "1px solid rgba(255,255,255,0.07)",
-        padding: "32px 72px",
+        padding: "32px clamp(20px, 5vw, 72px)",
         maxWidth: "1440px",
         margin: "0 auto",
         display: "flex",
+        flexWrap: "wrap",
+        gap: "8px 24px",
         justifyContent: "space-between",
         alignItems: "center",
       }}
